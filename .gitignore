@@ -2,7 +2,7 @@
 
 .env
 
-/tree.text
+.text
 # dependencies
 /node_modules
 /.pnp
