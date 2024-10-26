@@ -284,5 +284,9 @@ export const links: Links[] = [
     {
         label: "About",
         href: "/about",
+    },
+    {
+        label: "Add-Products",
+        href: "/add_items",
     }
 ];
