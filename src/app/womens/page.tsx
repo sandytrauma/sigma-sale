@@ -9,36 +9,29 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Product } from '@/types/Product';
 
-
-
-
-
 const MensSectionPage: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
+
   useEffect(() => {
     const fetchProducts = async () => {
-      const res = await fetch('http://localhost:3000/api/products?gender=women'); // Adjust URL if needed
+      const res = await fetch('http://localhost:3000/api/get-products?gender=F'); // Adjust URL as needed
       const data: Product[] = await res.json();
       setProducts(data);
     };
+
     fetchProducts();
   }, []);
-
 
   return (
     <section className={cn("min-h-screen bg-background p-6 mb-24")}>
       <div className="w-full text-center mb-6">
         <ProductCarousel />
 
-        <h1 className="p-4 text-4xl font-bold text-accent">Men's Clothing & Accessories</h1>
+        <h1 className="p-4 text-4xl font-bold text-accent">Women's Clothing & Accessories</h1>
         <p className="text-lg text-muted">Discover our latest collections</p>
       </div>
 
-
-
-      <main className={cn("grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-      )}
-      >
+      <main className={cn("grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6")}>
         {products.map((product) => (
           <Link
             key={product.id}
@@ -51,10 +44,11 @@ const MensSectionPage: React.FC = () => {
               alt={product.name}
               width={400}
               height={400}
+              priority
               className="w-full h-60 object-cover object-center rounded-md mb-4"
             />
             <h2 className="text-xl font-semibold text-muted-primary">{product.name}</h2>
-            <p className="text-lg text-muted-primary">{product.price}</p>
+            <p className="text-lg text-muted-primary">${product.price}</p>
           </Link>
         ))}
       </main>

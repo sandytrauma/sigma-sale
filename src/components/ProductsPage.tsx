@@ -27,7 +27,7 @@ const ProductsPage = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch("/api/get-products");
+      const response = await fetch("/api/get-products"); // Ensure this points to your API
       if (!response.ok) {
         throw new Error("Failed to fetch products");
       }
@@ -59,13 +59,11 @@ const ProductsPage = () => {
         <Card key={product.id} className="flex flex-col m-2">
           <CardHeader>
             <CardTitle>{product.name}</CardTitle>
-            {product.image && (
-              <img
-                src={"/shoes.jpg"}
-                alt={product.name}
-                className="w-full h-auto rounded-md"
-              />
-            )}
+            <img
+              src={product.image || "/skirt.jpg"} // Fallback image if product.image is not available
+              alt={product.name}
+              className="w-full h-auto rounded-md"
+            />
             <CardDescription className="text-accent font-semibold">
               Price: ${product.price}
             </CardDescription>
@@ -74,16 +72,13 @@ const ProductsPage = () => {
             {product.description && <p>{product.description}</p>}
             <p>Gender: {product.gender === "M" ? "Male" : "Female"}</p>
           </CardContent>
-          <Link href={"#"}>
-          <CardFooter className="justify-between">
-            
-            <p>Add to cart...</p>
-            
-            <span>
-              <FaCartPlus />
-            </span>
-            
-          </CardFooter>
+          <Link href={`/product/${product.id}`}>
+            <CardFooter className="justify-between">
+              <p>Add to cart...</p>
+              <span>
+                <FaCartPlus />
+              </span>
+            </CardFooter>
           </Link>
         </Card>
       ))}
