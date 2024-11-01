@@ -5,6 +5,7 @@ import Provider from "@/components/providers/Provider";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/header/Navbar";
 import Footer from "@/components/Footer";
+import { ClerkProvider } from "@clerk/nextjs";
 
 
 
@@ -22,6 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
+    <ClerkProvider>
     <html lang="en" suppressHydrationWarning={true}>
       <body className={cn("bg-background mt-20 w-full h-full text-primary", inter.className)}>
         <Provider>
@@ -33,5 +35,6 @@ export default function RootLayout({
         </Provider>
       </body>
     </html>
+    </ClerkProvider>
   );
 }

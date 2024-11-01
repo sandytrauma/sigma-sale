@@ -55,6 +55,7 @@ export default function Home() {
             className="camp-quote object-cover object-center float-end top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
           />
           <div className="feature-button p-4">
+            <Link href={"/products"}>
             <button className="bg-accent border-accent hover:bg-secondary py-2 px-4 rounded-md transition">
               <p className="flex text-muted items-center transform justify-center gap-2">
                 <ChevronRight className="lg:hover:rotate-90 duration-75" />
@@ -62,6 +63,7 @@ export default function Home() {
                 <span className="hidden sm:inline md:inline lg:inline"> our daily products</span>
               </p>
             </button>
+            </Link>
           </div>
         </div>
         
