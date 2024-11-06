@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import ProductCarousel from '@/components/ProductCarousel';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Product } from '@/types/Product';

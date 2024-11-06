@@ -63,6 +63,8 @@ const ProductsPage = () => {
             <Image
               src={product.image || "/skirt.jpg"} 
               alt={product.name}
+              width={48}
+              height={48}
               className="w-full h-auto rounded-md object-cover center"
             />
             <CardDescription className="text-accent font-semibold">
