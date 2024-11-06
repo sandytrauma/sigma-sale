@@ -16,7 +16,7 @@ const MensSectionPage: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   useEffect(() => {
     const fetchProducts = async () => {
-      const res = await fetch('http://localhost:3000/api/get-products?gender=K'); // Adjust URL if needed
+      const res = await fetch('api/get-products?gender=K'); // Adjust URL if needed
       const data: Product[] = await res.json();
       setProducts(data);
     };
