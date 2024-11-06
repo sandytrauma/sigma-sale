@@ -6,17 +6,18 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { ChevronRight } from "lucide-react";
-import { Container } from "postcss";
+
+import ProductCarousel from "@/components/ProductCarousel";
 
 
 
 export default function Home() {
 
   const [products, setProducts] = useState<Product[]>([]);
-  const [loading, isLoading] = useState();
+
   useEffect(() => {
     const fetchProducts = async () => {
-      const res = await fetch('http://localhost:3000/api/products');
+      const res = await fetch('http://localhost:3000/api/get-products');
       const data: Product[] = await res.json();
       setProducts(data);
 
@@ -67,6 +68,7 @@ export default function Home() {
           </div>
         </div>
         
+        
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 sm:mt-5 gap-x-4"
       >
@@ -97,6 +99,10 @@ export default function Home() {
         </div>
       </div>
 
+      <div className="w-full text-center mb-6">
+        <ProductCarousel />
+        <p className="text-lg text-muted">Discover our latest collections</p>
+      </div>
 
       
       <div className={cn("Feture-product p-4 mb-24"
@@ -128,6 +134,7 @@ export default function Home() {
             </Link>
           ))}
         </div>
+        
       </div>
 
 

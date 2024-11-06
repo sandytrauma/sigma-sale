@@ -24,12 +24,7 @@ const MensSectionPage: React.FC = () => {
 
   return (
     <section className={cn("min-h-screen bg-background p-6 mb-24")}>
-      <div className="w-full text-center mb-6">
-        <ProductCarousel />
-
-        <h1 className="p-4 text-4xl font-bold text-accent">Women's Clothing & Accessories</h1>
-        <p className="text-lg text-muted">Discover our latest collections</p>
-      </div>
+      
 
       <main className={cn("grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6")}>
         {products.map((product) => (

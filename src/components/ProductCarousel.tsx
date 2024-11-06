@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
@@ -13,13 +13,24 @@ interface Product {
   description?: string;
 }
 
-const products: Product[] = [
-  { id: 1, name: 'T-Shirt', image: '/tshirt.jpg', price: '₹200', description: 'A comfortable t-shirt.' },
-  { id: 2, name: 'Jeans', image: '/jeans.jpg', price: '₹400', description: 'Stylish jeans.' },
-  { id: 3, name: 'Jacket', image: '/jacket.jpg', price: '₹600', description: 'Warm jacket for winter.' },
-];
+// const products: Product[] = [
+//   { id: 1, name: 'T-Shirt', image: '/tshirt.jpg', price: '₹200', description: 'A comfortable t-shirt.' },
+//   { id: 2, name: 'Jeans', image: '/jeans.jpg', price: '₹400', description: 'Stylish jeans.' },
+//   { id: 3, name: 'Jacket', image: '/jacket.jpg', price: '₹600', description: 'Warm jacket for winter.' },
+// ];
 
 const ProductCarousel: React.FC = () => {
+
+  const [products, setProducts] = useState<Product[]>([]);
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const res = await fetch('http://localhost:3000/api/get-products'); // Adjust URL if needed
+      const data: Product[] = await res.json();
+      setProducts(data);
+    };
+    fetchProducts();
+  }, []);
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextSlide = () => {

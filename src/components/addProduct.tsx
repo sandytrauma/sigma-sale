@@ -10,7 +10,7 @@ const AddProduct = () => {
   const [image, setImage] = useState('');
   const [price, setPrice] = useState<number | ''>('');
   const [description, setDescription] = useState('');
-  const [gender, setGender] = useState<'M' | 'F'>('M');
+  const [gender, setGender] = useState<'M' | 'F' | 'K'>('M');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
@@ -108,6 +108,7 @@ const AddProduct = () => {
           >
             <option value="M">Male</option>
             <option value="F">Female</option>
+            <option value="K">Kids</option>
           </select>
         </label>
       </div>

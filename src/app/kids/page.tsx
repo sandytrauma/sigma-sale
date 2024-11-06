@@ -4,7 +4,6 @@ import { cn } from "@/lib/utils";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import ProductCarousel from '@/components/ProductCarousel';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Product } from '@/types/Product';
@@ -17,7 +16,7 @@ const MensSectionPage: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   useEffect(() => {
     const fetchProducts = async () => {
-      const res = await fetch('http://localhost:3000/api/products?gender=kids'); // Adjust URL if needed
+      const res = await fetch('http://localhost:3000/api/get-products?gender=K'); // Adjust URL if needed
       const data: Product[] = await res.json();
       setProducts(data);
     };
@@ -27,12 +26,7 @@ const MensSectionPage: React.FC = () => {
 
   return (
     <section className={cn("min-h-screen bg-background p-6 mb-24")}>
-      <div className="w-full text-center mb-6">
-        <ProductCarousel />
-
-        <h1 className="p-4 text-4xl font-bold text-accent">Men's Clothing & Accessories</h1>
-        <p className="text-lg text-muted">Discover our latest collections</p>
-      </div>
+      
 
 
 

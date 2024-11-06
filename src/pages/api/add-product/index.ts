@@ -12,8 +12,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return res.status(400).json({ error: 'Name is required and price must be a number.' });
       }
 
-      if (gender && !['M', 'F'].includes(gender)) {
-        return res.status(400).json({ error: 'Gender must be either "M" or "F".' });
+      if (gender && !['M', 'F', 'K'].includes(gender)) {
+        return res.status(400).json({ error: 'Gender must be either "M" or "F" & "category of K i.e. Kids".' });
       }
 
       // Insert product into the database

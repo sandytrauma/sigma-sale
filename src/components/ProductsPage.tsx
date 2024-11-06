@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import { FaCartPlus } from "react-icons/fa";
 import Link from "next/link";
+import Image from "next/image";
 
 type ProductItemType = {
   id: number;
@@ -27,7 +28,7 @@ const ProductsPage = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch("/api/get-products"); // Ensure this points to your API
+      const response = await fetch("/api/get-products"); 
       if (!response.ok) {
         throw new Error("Failed to fetch products");
       }
@@ -59,10 +60,10 @@ const ProductsPage = () => {
         <Card key={product.id} className="flex flex-col m-2">
           <CardHeader>
             <CardTitle>{product.name}</CardTitle>
-            <img
-              src={product.image || "/skirt.jpg"} // Fallback image if product.image is not available
+            <Image
+              src={product.image || "/skirt.jpg"} 
               alt={product.name}
-              className="w-full h-auto rounded-md"
+              className="w-full h-auto rounded-md object-cover center"
             />
             <CardDescription className="text-accent font-semibold">
               Price: ${product.price}
@@ -70,7 +71,7 @@ const ProductsPage = () => {
           </CardHeader>
           <CardContent className="flex-grow">
             {product.description && <p>{product.description}</p>}
-            <p>Gender: {product.gender === "M" ? "Male" : "Female"}</p>
+            <p>Category: {product.gender === "M" ? "Male" : "Female" || "Kids"}</p>
           </CardContent>
           <Link href={`/product/${product.id}`}>
             <CardFooter className="justify-between">
