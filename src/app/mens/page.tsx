@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import ProductCarousel from '@/components/ProductCarousel';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Product } from '@/types/Product';
@@ -14,17 +14,16 @@ const MensSectionPage: React.FC = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const res = await fetch('http://localhost:3000/api/get-products?gender=M'); // Adjust URL as needed
+      const res = await fetch('/api/get-products?gender=M'); // Adjust URL as needed
       const data: Product[] = await res.json();
       setProducts(data);
     };
 
     fetchProducts();
-  }, []);
+  }, [products]);
 
   return (
-    <section className={cn("min-h-screen bg-background p-6 mb-24")}>
-     
+    <section className={cn("min-h-screen bg-background p-6 mb-24")}>     
 
       <main className={cn("grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6")}>
         {products.map((product) => (
