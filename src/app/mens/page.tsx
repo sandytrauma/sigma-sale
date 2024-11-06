@@ -20,7 +20,7 @@ const MensSectionPage: React.FC = () => {
     };
 
     fetchProducts();
-  }, [products]);
+  }, []);
 
   return (
     <section className={cn("min-h-screen bg-background p-6 mb-24")}>     

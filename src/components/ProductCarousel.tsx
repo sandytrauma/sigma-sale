@@ -29,7 +29,7 @@ const ProductCarousel: React.FC = () => {
       setProducts(data);
     };
     fetchProducts();
-  }, [products]);
+  }, []);
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
