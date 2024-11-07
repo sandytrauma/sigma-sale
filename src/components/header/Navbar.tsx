@@ -9,13 +9,17 @@ import { links } from '@/constants/navLinks';
 import { ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 import ThemeSwitcher from '../ThemeSwitcher';
-import { SignInButton } from '@clerk/nextjs';
+import { UserButton, useUser } from '@clerk/nextjs';
+
 
 const Navbar = () => {
     const pathname = usePathname();
     const [isScrolled, setIsScrolled] = useState(false);
     const [hovering, setHovering] = useState<number | null>(null);
     const subRef = useRef<HTMLDivElement>(null);
+
+    const {user} = useUser();
+
 
     useEffect(() => {
         const handleScroll = () => {
@@ -31,6 +35,9 @@ const Navbar = () => {
     const handleMouseEnter = (index: number) => {
         setHovering(links[index].subLinks ? index : null);
     };
+
+    const userName = user?.firstName || user?.fullName;
+
 
     return (
         <header className={cn(
@@ -68,9 +75,7 @@ const Navbar = () => {
                                 </Link>
                             </div>
                         ))}
-                        <div>
-                            <button>Sign In</button>
-                        </div>
+                       
                         <div
                             ref={subRef}
                             className={cn(
@@ -143,16 +148,16 @@ const Navbar = () => {
                     </nav>
                 </div>
                 <div className="flex items-center gap-x-4">
+                   
                     <ThemeSwitcher />
-                    <div className="aspect-square h-10 rounded-full overflow-hidden relative">
-                        
-                        <Image
-                            src="/witch.jpg"
-                            alt="profile"
-                            fill
-                            className="object-cover object-center"
-                        />
-                    </div>
+                    
+                    {/* Display the UserButton from Clerk (it already manages the user's profile and sign-in) */}
+                    <UserButton />
+                     {/* Display the user's first name if available */}
+                     
+                     {userName && 
+                     
+                     <p className="text-accent capitalize">{userName}</p>}
                 </div>
             </div>
         </header>

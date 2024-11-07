@@ -288,5 +288,9 @@ export const links: Links[] = [
     {
         label: "Add-Products",
         href: "/add_items",
+    },
+    {
+        label: "Sign-in",
+        href: "/sign-in",
     }
 ];
